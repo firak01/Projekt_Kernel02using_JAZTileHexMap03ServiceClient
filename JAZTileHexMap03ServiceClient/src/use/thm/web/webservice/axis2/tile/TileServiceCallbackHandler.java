@@ -45,6 +45,22 @@
 
         
            /**
+            * auto generated Axis2 call back method for getTroopArmiesByHexCell method
+            * override this method for handling normal response from getTroopArmiesByHexCell operation
+            */
+           public void receiveResultgetTroopArmiesByHexCell(
+                    use.thm.web.webservice.axis2.tile.TileServiceStub.GetTroopArmiesByHexCellResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getTroopArmiesByHexCell operation
+           */
+            public void receiveErrorgetTroopArmiesByHexCell(java.lang.Exception e) {
+            }
+                
+           /**
             * auto generated Axis2 call back method for getVersion method
             * override this method for handling normal response from getVersion operation
             */
