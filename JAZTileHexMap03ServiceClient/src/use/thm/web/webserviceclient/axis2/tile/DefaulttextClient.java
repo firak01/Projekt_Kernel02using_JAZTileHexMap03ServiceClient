@@ -5,43 +5,37 @@ import java.rmi.RemoteException;
 import org.apache.axis2.AxisFault;
 
 import use.thm.web.webservice.axis2.tile.TileServiceStub;
+import use.thm.web.webservice.axis2.tile.TileServiceStub.GetTileDefaulttextByThiskey;
+import use.thm.web.webservice.axis2.tile.TileServiceStub.GetTileDefaulttextByThiskeyResponse;
 import use.thm.web.webservice.axis2.tile.TileServiceStub.GetTroopArmiesByHexCell;
 import use.thm.web.webservice.axis2.tile.TileServiceStub.GetTroopArmiesByHexCellResponse;
 import use.thm.web.webservice.axis2.tile.TileServiceStub.GetTroopArmyCount;
 import use.thm.web.webservice.axis2.tile.TileServiceStub.GetTroopArmyCountResponse;
+import use.thm.web.webservice.axis2.tile.TileServiceStub.TileDefaulttextPojo;
 import use.thm.web.webservice.axis2.tile.TileServiceStub.TroopArmyPojo;
 
 
 
-public class Client {
+public class DefaulttextClient {
 
 	public static void main(String[] args) {
 		
 	//Merke: Wenn sich der WebService ändert einfach die Proxy - Klassen neu erzeugen lassen. In Eclipse ausführen: NEW WebServiceClient 
-     
-       
+            
     //Create the stub object
 	TileServiceStub stub;
 	try {
 		stub = new TileServiceStub();
 				
-       GetTroopArmyCount getTroopArmyCount4 = new GetTroopArmyCount();
-       GetTroopArmyCountResponse objResponse = stub.getTroopArmyCount(getTroopArmyCount4);
-       System.out.println("Der WebService sagt, es gibt '" + objResponse.get_return() + "' Truppen auf der Karte.");
-		
-      
-       	String sX = "1";
-       	String sY = "4";
-	    GetTroopArmiesByHexCell getTroopArmiesByHexCell = new GetTroopArmiesByHexCell();
-	    getTroopArmiesByHexCell.setSMap("EINS");
-	    getTroopArmiesByHexCell.setSX(sX);
-	    getTroopArmiesByHexCell.setSY(sY);
-	    GetTroopArmiesByHexCellResponse objResponseArmies = stub.getTroopArmiesByHexCell(getTroopArmiesByHexCell);
-	    TroopArmyPojo[] troopArmies = objResponseArmies.get_return();
-	    for(TroopArmyPojo troopArmy : troopArmies){
-	    	System.out.println("Der WebService sagt, auf Position X/Y (" + sX + "/" + sY + ") gibt es " + troopArmy.getUniquename());
-	    }
-	    
+       GetTileDefaulttextByThiskey getTileDefaulttextByThiskey = new GetTileDefaulttextByThiskey();
+       
+       Long lngThiskey = new Long(1);
+       getTileDefaulttextByThiskey.setLngThiskey(lngThiskey);//setze den zu holenden "Thiskey"
+       
+       GetTileDefaulttextByThiskeyResponse objResponse = stub.getTileDefaulttextByThiskey(getTileDefaulttextByThiskey);
+       TileDefaulttextPojo objPojo = objResponse.get_return();
+       System.out.println("Der WebService sagt, DefaultTexte der TileObjekte für den Thiskey '" + lngThiskey.toString() + "': " + objPojo.getShorttext() + "|" + objPojo.getLongtext() + "|" + objPojo.getDescriptiontext() ); 
+		  
 	} catch (AxisFault e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -50,7 +44,7 @@ public class Client {
 		e.printStackTrace();
 	}
 	 
-	//Beispiel, wenn hier mit Proxy Klassend er WebServiceClient entwickelt wurde.
+	//Beispiel, wenn hier mit Proxy Klassend der WebServiceClient entwickelt wurde.
 		 //2) 
 //		HelloServiceProxy proxy = new HelloServiceProxy();
 //		proxy.setEndpoint("http://localhost:8080/Tryout.Web.Webservice.Axis2.HelloAxis2.001/services/HelloService");

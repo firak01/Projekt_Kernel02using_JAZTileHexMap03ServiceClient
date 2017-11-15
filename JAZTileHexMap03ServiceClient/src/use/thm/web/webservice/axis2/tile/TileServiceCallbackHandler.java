@@ -61,6 +61,22 @@
             }
                 
            /**
+            * auto generated Axis2 call back method for getTileDefaulttextByThiskey method
+            * override this method for handling normal response from getTileDefaulttextByThiskey operation
+            */
+           public void receiveResultgetTileDefaulttextByThiskey(
+                    use.thm.web.webservice.axis2.tile.TileServiceStub.GetTileDefaulttextByThiskeyResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getTileDefaulttextByThiskey operation
+           */
+            public void receiveErrorgetTileDefaulttextByThiskey(java.lang.Exception e) {
+            }
+                
+           /**
             * auto generated Axis2 call back method for getVersion method
             * override this method for handling normal response from getVersion operation
             */
