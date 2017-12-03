@@ -45,35 +45,19 @@
 
         
            /**
-            * auto generated Axis2 call back method for getTroopArmiesByHexCell method
-            * override this method for handling normal response from getTroopArmiesByHexCell operation
+            * auto generated Axis2 call back method for getProofJndiResourceUsedAvailable method
+            * override this method for handling normal response from getProofJndiResourceUsedAvailable operation
             */
-           public void receiveResultgetTroopArmiesByHexCell(
-                    use.thm.web.webservice.axis2.tile.TileServiceStub.GetTroopArmiesByHexCellResponse result
+           public void receiveResultgetProofJndiResourceUsedAvailable(
+                    use.thm.web.webservice.axis2.tile.TileServiceStub.GetProofJndiResourceUsedAvailableResponse result
                         ) {
            }
 
           /**
            * auto generated Axis2 Error handler
-           * override this method for handling error response from getTroopArmiesByHexCell operation
+           * override this method for handling error response from getProofJndiResourceUsedAvailable operation
            */
-            public void receiveErrorgetTroopArmiesByHexCell(java.lang.Exception e) {
-            }
-                
-           /**
-            * auto generated Axis2 call back method for getTileDefaulttextByThiskey method
-            * override this method for handling normal response from getTileDefaulttextByThiskey operation
-            */
-           public void receiveResultgetTileDefaulttextByThiskey(
-                    use.thm.web.webservice.axis2.tile.TileServiceStub.GetTileDefaulttextByThiskeyResponse result
-                        ) {
-           }
-
-          /**
-           * auto generated Axis2 Error handler
-           * override this method for handling error response from getTileDefaulttextByThiskey operation
-           */
-            public void receiveErrorgetTileDefaulttextByThiskey(java.lang.Exception e) {
+            public void receiveErrorgetProofJndiResourceUsedAvailable(java.lang.Exception e) {
             }
                 
            /**
@@ -90,6 +74,22 @@
            * override this method for handling error response from getVersion operation
            */
             public void receiveErrorgetVersion(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for getTroopArmiesByHexCell method
+            * override this method for handling normal response from getTroopArmiesByHexCell operation
+            */
+           public void receiveResultgetTroopArmiesByHexCell(
+                    use.thm.web.webservice.axis2.tile.TileServiceStub.GetTroopArmiesByHexCellResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getTroopArmiesByHexCell operation
+           */
+            public void receiveErrorgetTroopArmiesByHexCell(java.lang.Exception e) {
             }
                 
            /**
@@ -122,6 +122,38 @@
            * override this method for handling error response from getTroopArmyCount operation
            */
             public void receiveErrorgetTroopArmyCount(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for getTroopArmiesAll method
+            * override this method for handling normal response from getTroopArmiesAll operation
+            */
+           public void receiveResultgetTroopArmiesAll(
+                    use.thm.web.webservice.axis2.tile.TileServiceStub.GetTroopArmiesAllResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getTroopArmiesAll operation
+           */
+            public void receiveErrorgetTroopArmiesAll(java.lang.Exception e) {
+            }
+                
+           /**
+            * auto generated Axis2 call back method for getTileDefaulttextByThiskey method
+            * override this method for handling normal response from getTileDefaulttextByThiskey operation
+            */
+           public void receiveResultgetTileDefaulttextByThiskey(
+                    use.thm.web.webservice.axis2.tile.TileServiceStub.GetTileDefaulttextByThiskeyResponse result
+                        ) {
+           }
+
+          /**
+           * auto generated Axis2 Error handler
+           * override this method for handling error response from getTileDefaulttextByThiskey operation
+           */
+            public void receiveErrorgetTileDefaulttextByThiskey(java.lang.Exception e) {
             }
                 
 

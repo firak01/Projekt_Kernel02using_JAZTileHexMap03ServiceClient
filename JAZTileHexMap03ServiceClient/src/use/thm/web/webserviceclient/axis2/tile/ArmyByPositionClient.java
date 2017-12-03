@@ -13,7 +13,7 @@ import use.thm.web.webservice.axis2.tile.TileServiceStub.TroopArmyPojo;
 
 
 
-public class PositionClient {
+public class ArmyByPositionClient {
 
 	public static void main(String[] args) {
 		

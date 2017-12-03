@@ -5,41 +5,45 @@ import java.rmi.RemoteException;
 import org.apache.axis2.AxisFault;
 
 import use.thm.web.webservice.axis2.tile.TileServiceStub;
-import use.thm.web.webservice.axis2.tile.TileServiceStub.GetTileDefaulttextByThiskey;
-import use.thm.web.webservice.axis2.tile.TileServiceStub.GetTileDefaulttextByThiskeyResponse;
+import use.thm.web.webservice.axis2.tile.TileServiceStub.GetTroopArmiesAll;
+import use.thm.web.webservice.axis2.tile.TileServiceStub.GetTroopArmiesAllResponse;
 import use.thm.web.webservice.axis2.tile.TileServiceStub.GetTroopArmiesByHexCell;
 import use.thm.web.webservice.axis2.tile.TileServiceStub.GetTroopArmiesByHexCellResponse;
 import use.thm.web.webservice.axis2.tile.TileServiceStub.GetTroopArmyCount;
 import use.thm.web.webservice.axis2.tile.TileServiceStub.GetTroopArmyCountResponse;
-import use.thm.web.webservice.axis2.tile.TileServiceStub.TileDefaulttextPojo;
 import use.thm.web.webservice.axis2.tile.TileServiceStub.TroopArmyPojo;
 
 
 
-public class DefaulttextClient {
+public class ArmyListAllClient {
 
 	public static void main(String[] args) {
 		
-	//Merke1: Wenn sich der WebService ändert einfach die Proxy - Klassen neu erzeugen lassen. In Eclipse ausführen: NEW WebServiceClient 
-    //Merke2: Voraussetzung ist, das die Defaulttexte vorher gefüllt worden sind. Beispielsweise durch die Debug Funktion:   DebugKeyTabele_Vesrion_TileDefaulttextTHM       
+	//Merke: Wenn sich der WebService ändert einfach die Proxy - Klassen neu erzeugen lassen. In Eclipse ausführen: NEW WebServiceClient 
+     
+       
     //Create the stub object
 	TileServiceStub stub;
 	try {
 		stub = new TileServiceStub();
-				
-       GetTileDefaulttextByThiskey getTileDefaulttextByThiskey = new GetTileDefaulttextByThiskey();
-       
-       Long lngThiskey = new Long(1);
-       getTileDefaulttextByThiskey.setLngThiskey(lngThiskey);//setze den zu holenden "Thiskey"
-       
-       GetTileDefaulttextByThiskeyResponse objResponse = stub.getTileDefaulttextByThiskey(getTileDefaulttextByThiskey);
-       TileDefaulttextPojo objPojo = objResponse.get_return();
-       if(objPojo!=null){
-    	   System.out.println("Der WebService sagt, DefaultTexte der TileObjekte für den Thiskey '" + lngThiskey.toString() + "': " + objPojo.getShorttext() + "|" + objPojo.getLongtext() + "|" + objPojo.getDescriptiontext() );
-       }else{
-    	   System.out.println("Der WebService sagt, dass es KEINEN DefaultText der TileObjekte für den Thiskey '" + lngThiskey.toString() + "' gibt.");
-       }
-		  
+		
+      GetTroopArmyCount getTroopArmyCount4 = new GetTroopArmyCount();
+      GetTroopArmyCountResponse objResponseCount = stub.getTroopArmyCount(getTroopArmyCount4);
+      System.out.println("Der WebService sagt, es gibt '" + objResponseCount.get_return() + "' Truppen auf der Karte.");
+		
+		GetTroopArmiesAll getTroopArmiesAll10 = new GetTroopArmiesAll();
+		getTroopArmiesAll10.setSMap("EINS");//!!! Wichtig: Den Parameter zu setzen nicht vergessen.
+		GetTroopArmiesAllResponse objResponse = stub.getTroopArmiesAll(getTroopArmiesAll10);
+		TroopArmyPojo[] troopArmies = objResponse.get_return();
+
+	    for(TroopArmyPojo troopArmy : troopArmies){
+	    	if(troopArmy!=null){
+	    		int iX = troopArmy.getMapX();
+	    		int iY = troopArmy.getMapY();
+	    		System.out.println("Der WebService sagt, auf Position X/Y (" + iX + "/" + iY + ") gibt es " + troopArmy.getUniquename());
+	    	}
+	    }
+	    
 	} catch (AxisFault e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
