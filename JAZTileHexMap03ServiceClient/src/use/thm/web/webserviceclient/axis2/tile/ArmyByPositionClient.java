@@ -39,7 +39,11 @@ public class ArmyByPositionClient {
 	    GetTroopArmiesByHexCellResponse objResponseArmies = stub.getTroopArmiesByHexCell(getTroopArmiesByHexCell);
 	    TroopArmyPojo[] troopArmies = objResponseArmies.get_return();
 	    for(TroopArmyPojo troopArmy : troopArmies){
-	    	System.out.println("Der WebService sagt, auf Position X/Y (" + sX + "/" + sY + ") gibt es " + troopArmy.getUniquename());
+	    	if(troopArmy==null){
+	    		System.out.println("Der WebService sagt, auf Position X/Y (" + sX + "/" + sY + ") gibt es KEINE Armee.");
+	    	}else{
+	    		System.out.println("Der WebService sagt, auf Position X/Y (" + sX + "/" + sY + ") gibt es " + troopArmy.getUniquename());
+	    	}
 	    }
 	    
 	} catch (AxisFault e) {
